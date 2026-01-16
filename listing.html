@@ -14,11 +14,11 @@
 
   <form id="listingForm" enctype="multipart/form-data">
     <div class="form-grid">
-      <input name="year" placeholder="Year" required>
+      <input name="year" placeholder="Year" required type="number" min="1900" max="2099">
       <input name="make" placeholder="Make" required>
       <input name="model" placeholder="Model" required>
       <input name="part" placeholder="Part" required>
-      <input name="price" placeholder="Price ($)" required>
+      <input name="price" placeholder="Price ($)" required type="number" min="0" step="0.01">
       <input name="street" placeholder="Street Address" required>
       <input name="city" placeholder="City" required>
       <input name="county" placeholder="County" required>
