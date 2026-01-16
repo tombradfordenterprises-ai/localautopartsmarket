@@ -8,7 +8,7 @@
 </head>
 <body>
 <div class="page">
-  <header>
+  <header class="header">
     <h1>🚗 Local Auto Parts Marketplace</h1>
     <div class="location-search">
       <input id="countySearch" placeholder="County">
@@ -18,12 +18,12 @@
 
   <div class="search-card">
     <div class="vehicle-search">
-      <input id="year" placeholder="Year">
+      <input id="year" placeholder="Year (YYYY)">
       <input id="make" placeholder="Make">
       <input id="model" placeholder="Model">
       <input id="part" placeholder="Part">
-      <button onclick="goToSearchResults()">Search</button>
-      <button onclick="showAllListings()">All Listings</button>
+      <button type="button" onclick="goToSearchResults()">Search</button>
+      <button type="button" onclick="showAllListings()">All Listings</button>
     </div>
   </div>
 
@@ -35,4 +35,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-
