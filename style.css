@@ -1,0 +1,110 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #121212;
+  color: #f5f5f5;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.header {
+  background: #1e1e1e;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+}
+
+.header h1 {
+  margin: 0;
+  text-align: center;
+}
+
+.location-search,
+.vehicle-search {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+input, textarea, button {
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  width: 100%;
+}
+
+button {
+  background: #00c853;
+  color: black;
+  font-weight: bold;
+}
+
+.post-button {
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  background: #00c853;
+  color: black;
+  padding: 12px;
+  width: 200px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.listings {
+  display: grid;
+  gap: 15px;
+  padding: 15px;
+}
+
+.listing-card {
+  background: #1f1f1f;
+  padding: 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform .1s;
+}
+
+.listing-card:hover {
+  transform: scale(1.02);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+}
+
+.modal-content {
+  background: #1e1e1e;
+  max-width: 500px;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.close {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.form-container {
+  padding: 20px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+}
+
+@media (max-width: 600px) {
+  .location-search,
+  .vehicle-search {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Local Auto Parts Marketplace</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page">
+  <header>
+    <h1>🚗 Local Auto Parts Marketplace</h1>
+    <div class="location-search">
+      <input id="countySearch" placeholder="County">
+      <input id="stateSearch" placeholder="State">
+    </div>
+  </header>
+
+  <div class="search-card">
+    <div class="vehicle-search">
+      <input id="year" placeholder="Year">
+      <input id="make" placeholder="Make">
+      <input id="model" placeholder="Model">
+      <input id="part" placeholder="Part">
+      <button onclick="goToSearchResults()">Search</button>
+      <button onclick="showAllListings()">All Listings</button>
+    </div>
+  </div>
+
+  <a href="listing.html" class="post-button">➕ Post a Part</a>
+
+  <section id="listings" class="listings"></section>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+

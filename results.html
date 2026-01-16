@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Search Results</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<style>
+  body {
+    margin: 0;
+    background: radial-gradient(circle at top, #1a1a1a, #000);
+    color: #fff;
+    font-family: "Segoe UI", sans-serif;
+    display: flex;
+    justify-content: center;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+
+  .listings {
+    display: grid;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .listing-card {
+    background: #111;
+    border-left: 6px solid #00ff88;
+    padding: 18px;
+    border-radius: 12px;
+    cursor: pointer;
+  }
+
+  .back {
+    display: block;
+    text-align: center;
+    margin: 20px 0;
+    color: #00c6ff;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.85);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    background: #111;
+    padding: 25px;
+    border-radius: 14px;
+    max-width: 500px;
+    width: 90%;
+  }
+
+  .close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+  }
+</style>
+</head>
+
+<body>
+<div class="page">
+  <h1>Search Results</h1>
+  <a href="index.html" class="back">← Back to Search</a>
+  <section id="results" class="listings"></section>
+</div>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">×</span>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

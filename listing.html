@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Post a Part</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="form-container">
+  <header>
+    <h1>Post Auto Part</h1>
+  </header>
+
+  <form id="listingForm" enctype="multipart/form-data">
+    <div class="form-grid">
+      <input name="year" placeholder="Year" required>
+      <input name="make" placeholder="Make" required>
+      <input name="model" placeholder="Model" required>
+      <input name="part" placeholder="Part" required>
+      <input name="price" placeholder="Price ($)" required>
+      <input name="street" placeholder="Street Address" required>
+      <input name="city" placeholder="City" required>
+      <input name="county" placeholder="County" required>
+      <input name="state" placeholder="State" required>
+    </div>
+    <textarea name="description" placeholder="Description"></textarea>
+    <input type="file" name="images" multiple accept="image/*">
+    <button type="submit">Post Listing</button>
+  </form>
+</div>
+
+<script>
+const form = document.getElementById("listingForm");
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  const formData = new FormData(form);
+
+  try {
+    const res = await fetch("/api/listings", { method: "POST", body: formData });
+    const json = await res.json();
+
+    if (json.success) {
+      alert("Listing posted!");
+      window.location.href = "index.html";
+    } else {
+      alert("Error posting listing");
+      console.log(json);
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Server error. Make sure backend is running.");
+  }
+});
+</script>
+</body>
+</html>
