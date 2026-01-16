@@ -65,3 +65,4 @@ app.get("/api/listings", (req, res) => {
 
 // Start server
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+
