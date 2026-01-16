@@ -4,73 +4,7 @@
 <meta charset="UTF-8">
 <title>Search Results</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
-<style>
-  body {
-    margin: 0;
-    background: radial-gradient(circle at top, #1a1a1a, #000);
-    color: #fff;
-    font-family: "Segoe UI", sans-serif;
-    display: flex;
-    justify-content: center;
-  }
-
-  .page {
-    width: 100%;
-    max-width: 900px;
-    padding: 20px;
-  }
-
-  h1 {
-    text-align: center;
-  }
-
-  .listings {
-    display: grid;
-    gap: 15px;
-    margin-top: 20px;
-  }
-
-  .listing-card {
-    background: #111;
-    border-left: 6px solid #00ff88;
-    padding: 18px;
-    border-radius: 12px;
-    cursor: pointer;
-  }
-
-  .back {
-    display: block;
-    text-align: center;
-    margin: 20px 0;
-    color: #00c6ff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  .modal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.85);
-    justify-content: center;
-    align-items: center;
-  }
-
-  .modal-content {
-    background: #111;
-    padding: 25px;
-    border-radius: 14px;
-    max-width: 500px;
-    width: 90%;
-  }
-
-  .close {
-    float: right;
-    font-size: 28px;
-    cursor: pointer;
-  }
-</style>
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
@@ -88,5 +22,31 @@
 </div>
 
 <script src="script.js"></script>
+<script>
+const params = new URLSearchParams(window.location.search);
+const filters = {
+  year: params.get("year") || "",
+  make: params.get("make") || "",
+  model: params.get("model") || "",
+  part: params.get("part") || ""
+};
+
+if (document.getElementById("results")) {
+  fetchAndRenderListings(filters);
+}
+
+function showModal(content) {
+  const modal = document.getElementById("modal");
+  const modalBody = document.getElementById("modalBody");
+  modalBody.innerHTML = content;
+  modal.style.display = "flex";
+}
+
+function closeModal() {
+  const modal = document.getElementById("modal");
+  modal.style.display = "none";
+}
+</script>
 </body>
 </html>
+
