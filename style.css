@@ -1,6 +1,4 @@
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -16,13 +14,9 @@ body {
   top: 0;
 }
 
-.header h1 {
-  margin: 0;
-  text-align: center;
-}
+.header h1 { margin: 0; text-align: center; }
 
-.location-search,
-.vehicle-search {
+.location-search, .vehicle-search {
   display: flex;
   gap: 10px;
   margin-top: 10px;
@@ -67,15 +61,15 @@ button {
   transition: transform .1s;
 }
 
-.listing-card:hover {
-  transform: scale(1.02);
-}
+.listing-card:hover { transform: scale(1.02); }
 
 .modal {
   display: none;
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,.8);
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
@@ -92,9 +86,7 @@ button {
   cursor: pointer;
 }
 
-.form-container {
-  padding: 20px;
-}
+.form-container { padding: 20px; }
 
 .form-grid {
   display: grid;
@@ -103,8 +95,5 @@ button {
 }
 
 @media (max-width: 600px) {
-  .location-search,
-  .vehicle-search {
-    flex-direction: column;
-  }
+  .location-search, .vehicle-search { flex-direction: column; }
 }
