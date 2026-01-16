@@ -1,3 +1,4 @@
+// Navigate to results page with query params
 function goToSearchResults() {
   const params = new URLSearchParams({
     year: document.getElementById("year").value,
@@ -8,17 +9,17 @@ function goToSearchResults() {
   window.location.href = `results.html?${params.toString()}`;
 }
 
-function showAllListings() {
-  window.location.href = "results.html";
-}
+// Go to results page showing all listings
+function showAllListings() { window.location.href = "results.html"; }
 
-// Function to render listings dynamically
+// Fetch listings from backend and render
 async function fetchAndRenderListings(filters = {}) {
   try {
     const res = await fetch("/api/listings");
     const listings = await res.json();
 
-    const container = document.getElementById("listings");
+    const container = document.getElementById("results") || document.getElementById("listings");
+    if (!container) return;
     container.innerHTML = "";
 
     const filtered = listings.filter(list => {
@@ -34,17 +35,40 @@ async function fetchAndRenderListings(filters = {}) {
       div.innerHTML = `
         <h3>${list.year} ${list.make} ${list.model} - ${list.part}</h3>
         <p>$${list.price}</p>
-        <p>${list.city}, ${list.county}, ${list.state}</p>
+        <p>${list.street}, ${list.city}, ${list.county}, ${list.state}</p>
         <p>${list.description || ""}</p>
       `;
+      div.addEventListener("click", () => {
+        showModal(`
+          <h3>${list.year} ${list.make} ${list.model} - ${list.part}</h3>
+          <p>$${list.price}</p>
+          <p>${list.street}, ${list.city}, ${list.county}, ${list.state}</p>
+          <p>${list.description || ""}</p>
+          ${list.images.map(img => `<img src="${img}" style="max-width:100%;margin-top:10px;">`).join('')}
+        `);
+      });
       container.appendChild(div);
     });
-  } catch (err) {
-    console.error(err);
-  }
+  } catch (err) { console.error(err); }
 }
 
-// If listings container exists, render all listings
-if (document.getElementById("listings")) fetchAndRenderListings();
+// Modal functions
+function showModal(content) {
+  const modal = document.getElementById("modal");
+  if (!modal) return;
+  const modalBody = document.getElementById("modalBody");
+  modalBody.innerHTML = content;
+  modal.style.display = "flex";
+}
+function closeModal() {
+  const modal = document.getElementById("modal");
+  if (modal) modal.style.display = "none";
+}
+
+// Render listings if container exists
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("listings") || document.getElementById("results");
+  if (container) fetchAndRenderListings();
+});
 
    
